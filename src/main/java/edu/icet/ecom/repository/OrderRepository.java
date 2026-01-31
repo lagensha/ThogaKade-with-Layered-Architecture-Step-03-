@@ -18,8 +18,14 @@ public class OrderRepository implements OrderRepositoryInterFace{
     }
 
     @Override
-    public void addOrders(String orderId, String orderDate, String customerId) {
+    public void addOrders(String orderId, String orderDate, String customerId) throws SQLException {
+        Connection connection = DBConnection.getInstance().getConnection();
+        PreparedStatement preparedStatement =connection.prepareStatement("INSERT INTO orders VALUES(?,?,?)");
+        preparedStatement.setObject(1,orderId);
+        preparedStatement.setObject(2,orderDate);
+        preparedStatement.setObject(3,customerId);
 
+        preparedStatement.executeUpdate();
     }
 
     @Override

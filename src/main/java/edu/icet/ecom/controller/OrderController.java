@@ -38,7 +38,13 @@ public class OrderController implements Initializable {
 
     @FXML
     void btnAddOnAction(ActionEvent event) {
+        String id = txtOrderId.getText();
+        String date = txtOrderDate.getText();
+        String customerId=txtCustomerId.getText();
 
+        orderService.addOrders(id,date,customerId);
+        loadTable();
+        clearText();
     }
 
     @FXML

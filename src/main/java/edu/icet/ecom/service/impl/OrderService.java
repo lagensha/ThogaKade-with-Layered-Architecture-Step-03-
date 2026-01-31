@@ -8,6 +8,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -34,7 +35,12 @@ public class OrderService implements OrderServiceInterFace {
 
     @Override
     public void addOrders(String orderId, String orderDate, String customerId) {
-
+        try {
+            OrderRepository orderRepository = new OrderRepository();
+            orderRepository.addOrders(orderId,orderDate,customerId);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
