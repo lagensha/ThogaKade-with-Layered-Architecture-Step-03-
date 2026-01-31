@@ -18,15 +18,22 @@ public class ItemRepository implements ItemRepositoryInterFace{
     }
 
     @Override
-    public void addItems(String id, String description, String packSize, double unitPrice, int qty) {
+    public void addItems(String id, String description, String packSize, double unitPrice, int qty) throws SQLException {
+        Connection connection = DBConnection.getInstance().getConnection();
+        PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO item VALUES(?,?,?,?,?)");
+        preparedStatement.setObject(1,id);
+        preparedStatement.setObject(2,description);
+        preparedStatement.setObject(3,packSize);
+        preparedStatement.setObject(4,unitPrice);
+        preparedStatement.setObject(5,qty);
+
+        preparedStatement.executeUpdate();
 
     }
 
     @Override
-    public void updateItems(String description, String packSize, double unitPrice, int qty, String id) {
-
+    public void updateItems(String description, String packSize, double unitPrice, int qty, String id) throws SQLException {
     }
-
     @Override
     public void deleteItems(String id) {
 

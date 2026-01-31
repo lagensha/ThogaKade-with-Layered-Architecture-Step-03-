@@ -50,6 +50,15 @@ public class ItemController implements Initializable {
 
     @FXML
     void btnAddOnAction(ActionEvent event) {
+        String itemCode = txtItemCode.getText();
+        String description = txtDescription.getText();
+        String packSize = txtPackSize.getText();
+        double unitPrice = Double.parseDouble(txtUnitPrice.getText());
+        int qtyOnHand = Integer.parseInt(txtQtyOnHand.getText());
+
+        itemService.addItems(itemCode,description,packSize,unitPrice,qtyOnHand);
+        loadTable();
+        clearFields();
 
     }
 
@@ -60,7 +69,7 @@ public class ItemController implements Initializable {
 
     @FXML
     void btnResetOnAction(ActionEvent event) {
-
+            clearFields();
     }
 
     @FXML
@@ -90,5 +99,12 @@ public class ItemController implements Initializable {
     }
     public void loadTable(){
         tblItemTable.setItems(itemService.viewItems());
+    }
+    private void clearFields(){
+        txtItemCode.clear();
+        txtDescription.clear();
+        txtPackSize.clear();
+        txtUnitPrice.clear();
+        txtQtyOnHand.clear();
     }
 }

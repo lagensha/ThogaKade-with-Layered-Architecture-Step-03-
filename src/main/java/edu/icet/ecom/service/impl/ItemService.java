@@ -35,6 +35,12 @@ public class ItemService implements ItemServiceInterFace {
     @Override
     public void addItems(String id, String description, String packSize, double unitPrice, int qty) {
 
+        try {
+            ItemRepository itemRepository = new ItemRepository();
+            itemRepository.addItems(id,description,packSize,unitPrice,qty);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
