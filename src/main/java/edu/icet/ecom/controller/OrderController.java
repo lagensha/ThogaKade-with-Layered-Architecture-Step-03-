@@ -49,7 +49,10 @@ public class OrderController implements Initializable {
 
     @FXML
     void btnDeleteOnAction(ActionEvent event) {
-
+        String id = txtOrderId.getText();
+        orderService.deleteOrders(id);
+        loadTable();
+        clearText();
     }
 
     @FXML

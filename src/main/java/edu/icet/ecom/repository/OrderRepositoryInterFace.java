@@ -7,5 +7,5 @@ public interface OrderRepositoryInterFace {
     ResultSet viewOrders() throws SQLException;
     void addOrders(String orderId,String orderDate,String customerId) throws SQLException;
     void updateOrders(String orderDate,String customerId,String orderId) throws SQLException;
-    void deleteOrders(String orderId);
+    void deleteOrders(String orderId) throws SQLException;
 }

@@ -56,6 +56,11 @@ public class OrderService implements OrderServiceInterFace {
 
     @Override
     public void deleteOrders(String orderId) {
-
+        try {
+            OrderRepository orderRepository = new OrderRepository();
+            orderRepository.deleteOrders(orderId);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
