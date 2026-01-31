@@ -66,7 +66,14 @@ public class OrderDetailsController implements Initializable {
 
     @FXML
     void btnUpdateOnAction(ActionEvent event) {
+        String itemCode=txtItemCode.getText();
+        int qty=Integer.parseInt(txtOrderQTY.getText());
+        int discount=Integer.parseInt(txtDiscount.getText());
+        String id = txtOrderId.getText();
 
+        orderDetailsService.updateOrderDetails(itemCode,qty,discount,id);
+        loadTable();
+        clearText();
     }
 
     @Override

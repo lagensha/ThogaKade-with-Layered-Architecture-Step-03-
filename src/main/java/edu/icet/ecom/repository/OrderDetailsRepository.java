@@ -31,8 +31,14 @@ public class OrderDetailsRepository implements OrderDetailsRepositoryInterFace{
     }
 
     @Override
-    public void updateOrderDetails(String itemCode, int qty, int discount, String orderId) {
-
+    public void updateOrderDetails(String itemCode, int qty, int discount, String orderId) throws SQLException {
+        Connection connection = DBConnection.getInstance().getConnection();
+        PreparedStatement preparedStatement = connection.prepareStatement("UPDATE orderdetail SET ItemCode=?, OrderQTY=?,Discount=? WHERE OrderID=?");
+        preparedStatement.setObject(1,itemCode);
+        preparedStatement.setObject(2,qty);
+        preparedStatement.setObject(3,discount);
+        preparedStatement.setObject(4,orderId);
+        preparedStatement.executeUpdate();
     }
 
     @Override
