@@ -64,7 +64,10 @@ public class ItemController implements Initializable {
 
     @FXML
     void btnDeleteOnAction(ActionEvent event) {
-
+        String id = txtItemCode.getText();
+        itemService.deleteItems(id);
+        loadTable();
+        clearFields();
     }
 
     @FXML

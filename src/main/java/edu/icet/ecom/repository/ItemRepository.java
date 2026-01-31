@@ -45,7 +45,10 @@ public class ItemRepository implements ItemRepositoryInterFace{
 
     }
     @Override
-    public void deleteItems(String id) {
-
+    public void deleteItems(String id) throws SQLException {
+        Connection connection = DBConnection.getInstance().getConnection();
+        PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM item WHERE ItemCode=?");
+        preparedStatement.setObject(1,id);
+        preparedStatement.executeUpdate();
     }
 }

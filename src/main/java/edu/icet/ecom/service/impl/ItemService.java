@@ -57,5 +57,11 @@ public class ItemService implements ItemServiceInterFace {
     @Override
     public void deleteItems(String id) {
 
+        try {
+            ItemRepository itemRepository = new ItemRepository();
+            itemRepository.deleteItems(id);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
