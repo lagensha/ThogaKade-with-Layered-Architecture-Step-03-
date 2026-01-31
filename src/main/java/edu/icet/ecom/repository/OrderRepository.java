@@ -29,7 +29,13 @@ public class OrderRepository implements OrderRepositoryInterFace{
     }
 
     @Override
-    public void updateOrders(String orderDate, String customerId, String orderId) {
+    public void updateOrders(String orderDate, String customerId, String orderId) throws SQLException {
+        Connection connection = DBConnection.getInstance().getConnection();
+        PreparedStatement preparedStatement = connection.prepareStatement("UPDATE orders SET  OrderDate=?, CustID=? WHERE OrderID=?");
+        preparedStatement.setObject(1,orderDate);
+        preparedStatement.setObject(2,customerId);
+        preparedStatement.setObject(3,orderId);
+        preparedStatement.executeUpdate();
 
     }
 

@@ -46,6 +46,12 @@ public class OrderService implements OrderServiceInterFace {
     @Override
     public void updateOrders(String orderDate, String customerId, String orderId) {
 
+        try {
+            OrderRepository orderRepository = new OrderRepository();
+            orderRepository.updateOrders(orderDate,customerId,orderId);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override

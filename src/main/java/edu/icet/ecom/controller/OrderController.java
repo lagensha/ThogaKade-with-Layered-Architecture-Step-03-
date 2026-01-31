@@ -54,12 +54,18 @@ public class OrderController implements Initializable {
 
     @FXML
     void btnResetOnAction(ActionEvent event) {
-
+            clearText();
     }
 
     @FXML
     void btnUpdateOnAction(ActionEvent event) {
+        String date = txtOrderDate.getText();
+        String customerId=txtCustomerId.getText();
+        String id = txtOrderId.getText();
 
+        orderService.updateOrders(date,customerId,id);
+        loadTable();
+        clearText();
     }
 
     @Override
