@@ -31,6 +31,12 @@ public class OrderDetailsService implements OrderDetailsServiceInterFace{
 
     @Override
     public void addOrderDetails(String orderId, String itemCode, int qty, int discount) {
+        try {
+            OrderDetailsRepository orderDetailsRepository = new OrderDetailsRepository();
+            orderDetailsRepository.addOrderDetails(orderId,itemCode,qty,discount);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
 
     }
 

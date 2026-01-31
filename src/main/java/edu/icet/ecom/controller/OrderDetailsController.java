@@ -44,7 +44,14 @@ public class OrderDetailsController implements Initializable {
 
     @FXML
     void btnAddOnAction(ActionEvent event) {
+        String id=txtOrderId.getText();
+        String itemCode=txtItemCode.getText();
+        int qty=Integer.parseInt(txtOrderQTY.getText());
+        int discount=Integer.parseInt(txtDiscount.getText());
 
+        orderDetailsService.addOrderDetails(id,itemCode,qty,discount);
+        loadTable();
+        clearText();
     }
 
     @FXML
@@ -54,7 +61,7 @@ public class OrderDetailsController implements Initializable {
 
     @FXML
     void btnResetOnAction(ActionEvent event) {
-
+        clearText();
     }
 
     @FXML
@@ -81,5 +88,11 @@ public class OrderDetailsController implements Initializable {
     }
     public void loadTable(){
         tblOrderDetails.setItems(orderDetailsService.viewOrderDetails());
+    }
+    public void clearText(){
+        txtOrderId.clear();
+        txtItemCode.clear();
+        txtOrderQTY.clear();
+        txtDiscount.clear();
     }
 }
