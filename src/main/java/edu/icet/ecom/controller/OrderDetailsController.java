@@ -98,6 +98,7 @@ public class OrderDetailsController implements Initializable {
         });
     }
     public void loadTable(){
+
         tblOrderDetails.setItems(orderDetailsService.viewOrderDetails());
     }
     public void clearText(){
