@@ -42,7 +42,10 @@ public class OrderDetailsRepository implements OrderDetailsRepositoryInterFace{
     }
 
     @Override
-    public void deleteOrderDetails(String orderId) {
-
+    public void deleteOrderDetails(String orderId) throws SQLException {
+        Connection connection=DBConnection.getInstance().getConnection();
+        PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM orderdetail WHERE  OrderID=?");
+        preparedStatement.setObject(1,orderId);
+        preparedStatement.executeUpdate();
     }
 }

@@ -56,7 +56,11 @@ public class OrderDetailsController implements Initializable {
 
     @FXML
     void btnDeleteOnAction(ActionEvent event) {
+    String orderId=txtOrderId.getText();
 
+    orderDetailsService.deleteOrderDetails(orderId);
+    loadTable();
+    clearText();
     }
 
     @FXML
