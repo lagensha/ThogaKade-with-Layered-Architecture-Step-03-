@@ -74,7 +74,15 @@ public class ItemController implements Initializable {
 
     @FXML
     void btnUpdateOnAction(ActionEvent event) {
+        String description = txtDescription.getText();
+        String packSize = txtPackSize.getText();
+        double unitPrice = Double.parseDouble(txtUnitPrice.getText());
+        int qtyOnHand = Integer.parseInt(txtQtyOnHand.getText());
+        String itemCode = txtItemCode.getText();
 
+        itemService.updateItems(description,packSize,unitPrice,qtyOnHand,itemCode);
+        loadTable();
+        clearFields();
     }
 
     @Override
